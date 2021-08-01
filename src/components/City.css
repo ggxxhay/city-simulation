@@ -1,0 +1,9 @@
+.city-row {
+    display: flex;
+}
+
+.city-col {
+    width: 550px;
+    height: 550px;
+    float: left;
+}

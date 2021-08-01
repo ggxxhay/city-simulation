@@ -1,11 +1,15 @@
+import { Provider } from 'react-redux';
 import './App.css';
-import CrossRoadLight from './components/CrossRoadLight';
+import City from './components/City';
+import { store } from './store/store';
 
 function App() {
   return (
-    <div id="app">
-      <CrossRoadLight/>
-    </div>
+    <Provider store={store}>
+      <div id="app">
+        <City />
+      </div>
+    </Provider>
   )
 }
 

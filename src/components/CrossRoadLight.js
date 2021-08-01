@@ -1,10 +1,11 @@
 import { useEffect, useReducer } from "react";
+import { useSelector } from "react-redux";
 
 import "./CrossRoadLight.css";
 
-const LIGHT_RED = { counter: 3, light: 0 };
-const LIGHT_GREEN = { counter: 2, light: 1 };
-const LIGHT_YELLOW = { counter: 1, light: 2 };
+const LIGHT_RED = { counter: 10, light: 0 };
+const LIGHT_GREEN = { counter: 7, light: 1 };
+const LIGHT_YELLOW = { counter: 3, light: 2 };
 
 function reducerLightState(state) {
     if (state.counter === 0) {
@@ -23,17 +24,18 @@ function reducerLightState(state) {
 }
 
 function CrossRoadLight() {
-    const [lightState, dispatchLightState] = useReducer(reducerLightState, LIGHT_RED);
+    // const [lightState, dispatchLightState] = useReducer(reducerLightState, LIGHT_RED);
+    const lightState = useSelector((state) => state.xLight);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            dispatchLightState({ type: 'auto' });
-        }, 1000);
+    // useEffect(() => {
+    //     const intervalId = setInterval(() => {
+    //         dispatchLightState({ type: 'auto' });
+    //     }, 1000);
 
-        return () => {
-            clearInterval(intervalId);
-        }
-    }, [])
+    //     return () => {
+    //         clearInterval(intervalId);
+    //     }
+    // }, [])
 
     return (
         <div className="light-container">
