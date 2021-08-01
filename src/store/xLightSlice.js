@@ -10,15 +10,15 @@ const xLightSlice = createSlice({
         run: (state) => {
             if (state.counter === 0) {
                 switch (state.light) {
-                    case 0: // red
+                    case LIGHT_RED.light:
                         state.counter = LIGHT_GREEN.counter;
                         state.light = LIGHT_GREEN.light;
                         break;
-                    case 1: // green
+                    case LIGHT_GREEN.light:
                         state.counter = LIGHT_YELLOW.counter;
                         state.light = LIGHT_YELLOW.light;
                         break;
-                    case 2: // yellow
+                    case LIGHT_YELLOW.light:
                         state.counter = LIGHT_RED.counter;
                         state.light = LIGHT_RED.light;
                         break;
