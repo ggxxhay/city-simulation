@@ -1,0 +1,23 @@
+.city {
+  width: 1280px;
+  height: 1280px;
+  outline: 2px solid;
+
+  .city-row {
+    display: flex;
+
+    .city-block {
+      width: 550px;
+      height: 550px;
+      // border: 1px solid black;
+      outline: 1px solid;
+    }
+
+    .city-cross-road {
+      width: 180px;
+      height: 180px;
+      // border: 1px solid black;
+      outline: 1px solid;
+    }
+  }
+}

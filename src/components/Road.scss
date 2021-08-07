@@ -1,0 +1,36 @@
+.road-right {
+  display: flex;
+  width: 550px;
+  height: 180px;
+
+  .road-run {
+    width: 500px;
+    height: 180px;
+    // border: 1px solid black;
+    outline: 1px solid;
+  }
+
+  .road-half {
+    width: 500px;
+    height: 90px;
+    position: relative;
+  }
+
+  .road-half-center {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  .road-line {
+    border-bottom: 1px dashed black;
+  }
+
+  .rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+}

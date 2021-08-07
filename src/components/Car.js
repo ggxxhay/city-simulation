@@ -13,7 +13,7 @@ function Car(props) {
     const refCar = props.refCar;
     const initPos = useRef();
 
-    const lightState = useSelector((state) => state.xLight);
+    const lightState = useSelector((state) => state.lightX);
     const currentPos = refCar.current != null ? refCar.current.getBoundingClientRect() : null;
     const stopPos = props.refRoadRun.current != null ? props.refRoadRun.current.getBoundingClientRect() : null;
 
@@ -25,8 +25,6 @@ function Car(props) {
     // init pos
     useEffect(() => {
         const pos = initPos.current = props.refSpawnPos.current.getBoundingClientRect();
-        // refCar.current.style.top = pos.top + "px";
-        // refCar.current.style.left = pos.left + "px";
         setCarPos({ left: pos.left, top: pos.top });
     }, [props.refSpawnPos, refCar])
 
@@ -43,7 +41,6 @@ function Car(props) {
                         currentLeftNum = initPos.current.left;
                     }
                 }
-                // car.style.left = currentLeftNum + speed + "px";
                 setCarPos((state) => { return { left: currentLeftNum + speed, top: state.top } });
             }
         }, moveIntervalTime);

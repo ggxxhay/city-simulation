@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import xLightSlice from "./xLightSlice";
+import { lightSliceX, lightSliceY } from "./lightSlice";
 
 export const store = configureStore({
     reducer: {
-        xLight: xLightSlice.reducer,
+        lightX: lightSliceX.reducer,
+        lightY: lightSliceY.reducer,
     },
 })

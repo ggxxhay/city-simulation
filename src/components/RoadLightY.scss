@@ -1,0 +1,25 @@
+.light-container-y {
+  width: 180px;
+  height: 50px;
+  // border: 1px solid black;
+  outline: 1px solid;
+
+  .light-counter {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 10px 0px 10px 10px;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+  }
+
+  .light-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 10px 0px 10px 10px;
+    float: left;
+  }
+}
