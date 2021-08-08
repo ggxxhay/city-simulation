@@ -1,0 +1,19 @@
+#app {
+  // text-align: center;
+  a {
+    text-decoration: none;
+    padding: 5px;
+  }
+  ul li {
+    display: inline;
+    color: black;
+    font-weight: bold;
+  }
+  li .active {
+    color: blue;
+  }
+  li :hover {
+    background-color: blue;
+    color: white;
+  }
+}
