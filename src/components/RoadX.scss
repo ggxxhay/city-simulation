@@ -14,12 +14,8 @@
     width: 500px;
     height: 90px;
     position: relative;
-  }
-
-  .road-half-center {
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
+    display: flex;
+    align-items: center;
   }
 
   .road-line {

@@ -1,59 +1,51 @@
-import { useEffect, useRef } from "react";
-import "./City.scss";
-
-import { RoadLeft, RoadRight } from "./Road";
-import Car from "./Car";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { lightActionsX } from "../store/lightSlice";
-import { RoadBottom, RoadTop } from "./RoadBottom";
+
+import "./City.scss";
+
+import { RoadLeft, RoadRight } from "./RoadX";
+import { RoadBottom, RoadTop } from "./RoadY";
 
 function City() {
     const dispatch = useDispatch();
 
-    const refSpawnPos = useRef();
-    const refRoadRun = useRef();
-    const refCar = useRef();
+    const [cityPos, setCityPos] = useState();
+
+    const refCity = useRef();
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
+        setCityPos(refCity.current.getBoundingClientRect())
+    }, [])
+
+    // dispatch light state
+    useEffect(() => {
+        const lightStateInterval = setInterval(() => {
             dispatch(lightActionsX.run());
         }, 1000);
 
         return () => {
-            clearInterval(intervalId);
+            clearInterval(lightStateInterval);
         }
     }, [dispatch])
 
-    // useEffect(() => {
-    //     refSpawnPos.current.getBoundingClientRect();
-    //     refCar.current.getBoundingClientRect();
-    // }, [])
-
     return (
-        <div className="city">
+        <div className="city" ref={refCity}>
             <div className="city-row">
                 <div className="city-block"></div>
-                <RoadBottom refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} />
+                <RoadBottom cityPos={cityPos} />
                 <div className="city-block"></div>
             </div>
             <div className="city-row">
-                <RoadRight refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} />
+                <RoadRight cityPos={cityPos} />
                 <div className="city-cross-road"></div>
-                <RoadLeft refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} />
+                <RoadLeft cityPos={cityPos} />
             </div>
             <div className="city-row">
                 <div className="city-block"></div>
-                <RoadTop refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} />
+                <RoadTop cityPos={cityPos} />
                 <div className="city-block"></div>
             </div>
-
-            
-            {/* <RoadTop refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} /> */}
-
-            {/* <RoadRight refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} />
-            <Car refCar={refCar} refSpawnPos={refSpawnPos} refRoadRun={refRoadRun} /> */}
-            {/* <RoadLightY />
-            <RoadLightX /> */}
         </div>
     )
 }
