@@ -53,6 +53,7 @@ function CarBottom(props) {
             if (isRunning && isVisible && carPos != null) {
                 if (carPos.bottom >= cityPos.bottom) {
                     setIsVisible(false);
+                    clearInterval(moveInterval);
                 }
                 if (carPos.bottom > stopPos.bottom && !isCarPassedStopPos) {
                     onCarPassStopPos();
