@@ -4,8 +4,8 @@ import { lightActionsX } from "../store/lightSlice";
 
 import "./City.scss";
 
-import { RoadLeft, RoadRight } from "./RoadX";
-import { RoadBottom, RoadTop } from "./RoadY";
+import { RoadLeft, RoadRight } from "../components/RoadX";
+import { RoadBottom, RoadTop } from "../components/RoadY";
 
 function City() {
     const dispatch = useDispatch();

@@ -1,32 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import './App.scss';
-import City from './components/City';
+import City from './pages/City';
+import About from './pages/About';
+import Home from './pages/Home';
 import { store } from './store/store';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <div id="app">
-          <Header />
-
-          <Switch>
-            <Route exact path="/">
-              <City />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
-  )
-}
-
-function Header() {
   const [hasError, setHasError] = useState(false);
   const [tips, setTips] = useState(["Xin chào!"]);
   const [tipIndex, setTipIndex] = useState(0);
@@ -52,11 +33,11 @@ function Header() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!hasError) {
-        setTipIndex(revTipIndex => {
-          if (revTipIndex >= tips.length - 1) {
+        setTipIndex(prevTipIndex => {
+          if (prevTipIndex >= tips.length - 1) {
             return 0;
           } else {
-            return revTipIndex + 1;
+            return prevTipIndex + 1;
           }
         });
       }
@@ -68,30 +49,51 @@ function Header() {
   }, [hasError, tips])
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink exact to="/" activeClassName="active">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about" activeClassName="active">About</NavLink>
-        </li>
+    <Provider store={store}>
+      <Router>
+        <div id="app">
+          <header>
+            <div className="header-text">
+              My React Project
+            </div>
 
-        <div className="tips">
-          {hasError ? "Mọi chuyện vẫn ổn cả chứ?" : tips[tipIndex]}
+            <nav>
+              <ul>
+                <li>
+                  <NavLink to="/home" activeClassName="active">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/city" activeClassName="active">City</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/about" activeClassName="active">About</NavLink>
+                </li>
+              </ul>
+            </nav>
+
+            <div className="tips header-text">
+              {hasError ? "Mọi chuyện vẫn ổn cả chứ?" : tips[tipIndex]}
+            </div>
+          </header>
+
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/city">
+              <City />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
         </div>
-      </ul>
-    </nav>
+      </Router>
+    </Provider>
   )
-}
-
-function About() {
-  return (
-    <div>
-      <p>This project is inspired by: <a href="https://demos.littleworkshop.fr/infinitown" target="_blank" rel="noreferrer">Infinitown</a></p>
-      <p>Project Url: <a href="https://github.com/ggxxhay/city-simulation" target="_blank" rel="noreferrer">City simulation</a></p>
-    </div>
-  );
 }
 
 export default App;

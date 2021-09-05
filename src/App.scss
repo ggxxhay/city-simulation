@@ -1,21 +1,33 @@
 #app {
-  a {
-    text-decoration: none;
-    padding: 5px;
-  }
-  ul li {
-    display: inline;
-    color: black;
-    font-weight: bold;
-  }
-  li .active {
-    color: blue;
-  }
-  li :hover {
-    background-color: blue;
-    color: white;
-  }
-  ul .tips {
-    float: right;
+  header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+    nav {
+      font-size: x-large;
+    }
+    a {
+      text-decoration: none;
+      padding: 5%;
+    }
+    ul li {
+      display: inline;
+      color: black;
+      font-weight: bold;
+    }
+    li .active {
+      color: blue;
+    }
+    li :hover {
+      background-color: blue;
+      color: white;
+    }
+    .tips {
+      margin-left: auto;
+    }
+    .header-text {
+      font-size: x-large;
+    }
   }
 }
